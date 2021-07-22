@@ -1,7 +1,9 @@
 {
 	"name": "iruka-flutter",
 	"displayName": "IRuKa Cubit Generator",
-	"description": "Simple cubit generator by Ruslan Kryzhanovskyi",
+	"publisher": "IRuKa",
+	"repository": "https://github.com/RusKryzhanovskiy/iruka-flutter-cubit-generator",
+	"description": "Simple cubit generator by IRuKa",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.58.0"
