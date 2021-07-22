@@ -1,21 +1,18 @@
 import * as util from '../utils/utils';
 import Case = require('case');
 
-export async function createScreenFromTemplate(name: string) {
-    const targetDirectory = await util.targetDirectory(Case.snake(name));
-
-    const content = await screenContent(Case.pascal(name));
-    util.writeFile(targetDirectory, `${Case.snake(name)}_screen.dart`, content);
+export async function createScreenFromTemplate(name: string, targetDir: string) {
+	const content = await screenContent(Case.pascal(name), targetDir);
+	util.writeFile(targetDir, `${Case.snake(name)}_screen.dart`, content);
 }
 
-async function screenContent(name: string): Promise<string> {
-    const projectName = await util.readPubspecYamlProperty('name');
-    const targetDirectory = await util.targetDirectory(Case.snake(name));
+async function screenContent(name: string, targetDir: string): Promise<string> {
+	const projectName = await util.readPubspecYamlProperty('name');
 
-    const cubitImport = `import 'package:${projectName}/${targetDirectory.split('/lib/')[1]}/${Case.snake(name)}_cubit.dart';`;
-    const stateImport = `import 'package:${projectName}/${targetDirectory.split('/lib/')[1]}/${Case.snake(name)}_state.dart';`;
+	const cubitImport = `import 'package:${projectName}/${targetDir.split('/lib/')[1]}/${Case.snake(name)}_cubit.dart';`;
+	const stateImport = `import 'package:${projectName}/${targetDir.split('/lib/')[1]}/${Case.snake(name)}_state.dart';`;
 
-    return `import 'package:flutter/material.dart';
+	return `import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 ${cubitImport}
 ${stateImport}

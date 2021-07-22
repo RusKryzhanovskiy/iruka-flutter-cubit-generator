@@ -12,18 +12,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createCubitFromTemplate = void 0;
 const util = require("../utils/utils");
 const Case = require("case");
-function createCubitFromTemplate(name) {
+function createCubitFromTemplate(name, targetDir) {
     return __awaiter(this, void 0, void 0, function* () {
-        const targetDirectory = yield util.targetDirectory(Case.snake(name));
-        const content = yield cubitContent(Case.pascal(name));
-        util.writeFile(targetDirectory, `${Case.snake(name)}_cubit.dart`, content);
+        const content = yield cubitContent(Case.pascal(name), targetDir);
+        util.writeFile(targetDir, `${Case.snake(name)}_cubit.dart`, content);
     });
 }
 exports.createCubitFromTemplate = createCubitFromTemplate;
-function cubitContent(name) {
+function cubitContent(name, targetDirectory) {
     return __awaiter(this, void 0, void 0, function* () {
         const projectName = yield util.readPubspecYamlProperty('name');
-        const targetDirectory = yield util.targetDirectory(Case.snake(name));
         const stateImport = `import 'package:${projectName}/${targetDirectory.split('/lib/')[1]}/${Case.snake(name)}_state.dart';`;
         return `import 'package:flutter_bloc/flutter_bloc.dart';
 ${stateImport}

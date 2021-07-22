@@ -6,9 +6,9 @@ import { createStateFromTemplate } from './templates/state_template';
 import { createScreenFromTemplate } from './templates/screen_template';
 
 export function activate(context: vscode.ExtensionContext) {
-	console.log('Congratulations, your extension "iruka-flutter" is now active!');
+	console.log('Congratulations, your extension "iruka-flutter-cubit-generator" is now active!');
 
-	let disposable = vscode.commands.registerCommand('iruka-flutter.newCubit', async () => {
+	let disposable = vscode.commands.registerCommand('iruka-flutter-cubit-generator.newCubit', async () => {
 		try {
 			const input = await util.showInputBox(
 				'Cubit name you want to create.',
@@ -16,21 +16,25 @@ export function activate(context: vscode.ExtensionContext) {
 			);
 
 			if (input === undefined) {
-				return vscode.window.showErrorMessage('Wrong input data');
+				return vscode.window.showErrorMessage(`Your input can't be recognized!`);
 			}
 
 			const targetDirectory = await util.targetDirectory(Case.snake(input));
+
+			if (util.isDirectoryExist(targetDirectory)) {
+				return vscode.window.showErrorMessage(`The ${Case.snake(input)} directory is already exist!`);
+			}
+
 			util.makeDirrectory(targetDirectory);
 
-			await createCubitFromTemplate(input);
-			await createStateFromTemplate(input);
-			await createScreenFromTemplate(input);
+			await createCubitFromTemplate(input, targetDirectory);
+			await createStateFromTemplate(input, targetDirectory);
+			await createScreenFromTemplate(input, targetDirectory);
 
 			vscode.window.showInformationMessage(`Cubit was created`);
-			return await vscode.commands.executeCommand("editor.action.format");
 		} catch (error) {
 			console.error(error);
-			return vscode.window.showErrorMessage(`Something went wrong`);
+			return vscode.window.showErrorMessage(`Cubit wasn't created`);
 		}
 	});
 

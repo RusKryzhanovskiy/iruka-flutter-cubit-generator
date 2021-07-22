@@ -1,9 +1,9 @@
 {
-	"name": "iruka-flutter",
-	"displayName": "IRuKa Cubit Generator",
-	"publisher": "IRuKa",
+	"name": "iruka-flutter-cubit-generator",
+	"displayName": "IRuKA Cubit Generator",
+	"publisher": "IRuKA",
 	"repository": "https://github.com/RusKryzhanovskiy/iruka-flutter-cubit-generator",
-	"description": "Simple cubit generator by IRuKa",
+	"description": "Simple flutter cubit generator",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.58.0"
@@ -14,20 +14,20 @@
 		"Programming Languages"
 	],
 	"activationEvents": [
-		"onCommand:iruka-flutter.newCubit"
+		"onCommand:iruka-flutter-cubit-generator.newCubit"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "iruka-flutter.newCubit",
+				"command": "iruka-flutter-cubit-generator.newCubit",
 				"title": "New Cubit"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "iruka-flutter.newCubit",
+					"command": "iruka-flutter-cubit-generator.newCubit",
 					"group": "navigation",
 					"when": "explorerResourceIsFolder"
 				}

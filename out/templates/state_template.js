@@ -12,10 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createStateFromTemplate = void 0;
 const util = require("../utils/utils");
 const Case = require("case");
-function createStateFromTemplate(name) {
+function createStateFromTemplate(name, targetDir) {
     return __awaiter(this, void 0, void 0, function* () {
-        const targetDirectory = yield util.targetDirectory(Case.snake(name));
-        util.writeFile(targetDirectory, `${Case.snake(name)}_state.dart`, stateContent(Case.pascal(name)));
+        util.writeFile(targetDir, `${Case.snake(name)}_state.dart`, stateContent(Case.pascal(name)));
     });
 }
 exports.createStateFromTemplate = createStateFromTemplate;

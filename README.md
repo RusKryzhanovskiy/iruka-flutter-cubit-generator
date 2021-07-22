@@ -1,4 +1,4 @@
-# iruka-flutter README
+# iruka-flutter-cubit-generator README
 
 This extension can generate a new Cubit for your project
 

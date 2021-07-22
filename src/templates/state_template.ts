@@ -1,9 +1,8 @@
 import * as util from '../utils/utils';
 import Case = require('case');
 
-export async function createStateFromTemplate(name: string) {
-    const targetDirectory = await util.targetDirectory(Case.snake(name));
-    util.writeFile(targetDirectory, `${Case.snake(name)}_state.dart`, stateContent(Case.pascal(name)));
+export async function createStateFromTemplate(name: string, targetDir: string) {
+    util.writeFile(targetDir, `${Case.snake(name)}_state.dart`, stateContent(Case.pascal(name)));
 }
 
 function stateContent(name: String): string {
