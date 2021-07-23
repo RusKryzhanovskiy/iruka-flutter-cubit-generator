@@ -1,10 +1,20 @@
 {
 	"name": "iruka-flutter-cubit-generator",
-	"displayName": "IRuKA Cubit Generator",
+	"displayName": "Flutter Cubit",
 	"publisher": "IRuKA",
-	"repository": "https://github.com/RusKryzhanovskiy/iruka-flutter-cubit-generator",
-	"description": "Simple flutter cubit generator",
-	"version": "0.0.1",
+	"icon": "assets/logo.png",
+	"homepage": "https://github.com/RusKryzhanovskiy/iruka-flutter-cubit-generator",
+	"description": "Provides tools for effectively creating cubits for your Flutter applications",
+	"author": {
+		"name": "Ruslan Kryzhanovskyi",
+		"email": "ruskryzhanovskiy@gmail.com",
+		"url": "https://www.linkedin.com/in/ruskryzhanovskiy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RusKryzhanovskiy/iruka-flutter-cubit-generator"
+	},
+	"version": "0.0.3",
 	"engines": {
 		"vscode": "^1.58.0"
 	},
@@ -21,6 +31,7 @@
 		"commands": [
 			{
 				"command": "iruka-flutter-cubit-generator.newCubit",
+				"category": "Cubit",
 				"title": "New Cubit"
 			}
 		],

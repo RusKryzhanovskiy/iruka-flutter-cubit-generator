@@ -25,6 +25,9 @@ function activate(context) {
                 return vscode.window.showErrorMessage(`Your input can't be recognized!`);
             }
             const targetDirectory = yield util.targetDirectory(Case.snake(input));
+            if (targetDirectory === null) {
+                return vscode.window.showErrorMessage(`Click on the folder in the Explorer View in which you want to create a cubit and then run the command!`);
+            }
             if (util.isDirectoryExist(targetDirectory)) {
                 return vscode.window.showErrorMessage(`The ${Case.snake(input)} directory is already exist!`);
             }

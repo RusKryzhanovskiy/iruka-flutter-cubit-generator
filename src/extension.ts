@@ -21,6 +21,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 			const targetDirectory = await util.targetDirectory(Case.snake(input));
 
+			if (targetDirectory === null) {
+				return vscode.window.showErrorMessage(
+					`Click on the folder in the Explorer View in which you want to create a cubit and then run the command!`
+				);
+			}
+
 			if (util.isDirectoryExist(targetDirectory)) {
 				return vscode.window.showErrorMessage(`The ${Case.snake(input)} directory is already exist!`);
 			}

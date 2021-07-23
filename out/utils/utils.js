@@ -13,7 +13,6 @@ exports.showInputBox = exports.makeDirrectory = exports.isDirectoryExist = expor
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
-const vscode_1 = require("vscode");
 const YAML = require("yaml");
 function currentDirectory() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -29,32 +28,14 @@ function currentDirectory() {
 }
 exports.currentDirectory = currentDirectory;
 function targetDirectory(subfolder) {
-    var _a;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const rootDirectory = yield currentDirectory();
-            if (rootDirectory.path !== '/') {
+            const dotIndex = rootDirectory.path.indexOf('.');
+            if (dotIndex < 0 || (rootDirectory.path.charAt(dotIndex - 1) === '/')) {
                 return `${rootDirectory.path}/${subfolder}`;
             }
-            const folders = (_a = vscode.workspace) === null || _a === void 0 ? void 0 : _a.workspaceFolders;
-            if (folders === undefined) {
-                throw Error(`Can't find a destination directory`);
-            }
-            const path = yield vscode.window.showInputBox({
-                ignoreFocusOut: true,
-                title: 'Enter the path you want to locate your cubit folder',
-                placeHolder: 'lib/cubits/auth',
-                validateInput: (text) => {
-                    if (text.startsWith('/') || text.endsWith('/')) {
-                        return `Don't use the '/' symbol at the start or at the end of the path`;
-                    }
-                    else {
-                        return undefined;
-                    }
-                }
-            });
-            const result = vscode_1.Uri.file(`${folders[0].uri.path}/${path}/${subfolder}`);
-            return result.path;
+            return null;
         }
         catch (error) {
             console.error(error);

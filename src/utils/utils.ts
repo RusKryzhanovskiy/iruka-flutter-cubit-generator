@@ -14,32 +14,15 @@ export async function currentDirectory(): Promise<Uri> {
     }
 }
 
-export async function targetDirectory(subfolder: string): Promise<string> {
+export async function targetDirectory(subfolder: string): Promise<string | null> {
     try {
         const rootDirectory = await currentDirectory();
-        if (rootDirectory.path !== '/') {
+
+        const dotIndex = rootDirectory.path.indexOf('.');
+        if (dotIndex < 0 || (rootDirectory.path.charAt(dotIndex - 1) === '/')) {
             return `${rootDirectory.path}/${subfolder}`;
         }
-
-        const folders = vscode.workspace?.workspaceFolders;
-        if (folders === undefined) {
-            throw Error(`Can't find a destination directory`);
-        }
-
-        const path = await vscode.window.showInputBox({
-            ignoreFocusOut: true,
-            title: 'Enter the path you want to locate your cubit folder',
-            placeHolder: 'lib/cubits/auth',
-            validateInput: (text: string): string | undefined => {
-                if (text.startsWith('/') || text.endsWith('/')) {
-                    return `Don't use the '/' symbol at the start or at the end of the path`;
-                } else {
-                    return undefined;
-                }
-            }
-        });
-        const result = Uri.file(`${folders[0].uri.path}/${path}/${subfolder}`);
-        return result.path;
+        return null;
     } catch (error) {
         console.error(error);
         throw error;
