@@ -1,4 +1,4 @@
-# Cubit generator
+# Flutter Cubit generator
 Create your cubits simple and stable in the short time!
 
 ## Description
@@ -14,7 +14,7 @@ Just take a look:
 3. Push the `return` button on your keyboard.
 4. Voila!
 
-[Video guide](/assets/context.gif)
+![demo](https://raw.githubusercontent.com/RusKryzhanovskiy/iruka-flutter-cubit-generator/master/assets/context.gif)
 
 ##### With the Command Palette
 1. Tap on the folder in the Explorer view you want to create cubit in.
@@ -22,8 +22,8 @@ Just take a look:
 2. Enter the name of the cubit you want to create `without` "*cubit" ending
 3. Push the Enter/Return button
 4. You're great!
-
-[Video guide](/assets/palette.gif)
+   
+![demo](https://raw.githubusercontent.com/RusKryzhanovskiy/iruka-flutter-cubit-generator/master/assets/palette.gif)
 
 ### Benefits
 * The time-tested structure (this structure is used by many people at the moment)
