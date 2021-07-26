@@ -14,7 +14,7 @@
 		"type": "git",
 		"url": "https://github.com/RusKryzhanovskiy/iruka-flutter-cubit-generator"
 	},
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"engines": {
 		"vscode": "^1.58.0"
 	},
@@ -32,14 +32,15 @@
 			{
 				"command": "iruka-flutter-cubit-generator.newCubit",
 				"category": "Cubit",
-				"title": "New Cubit"
+				"title": "New Cubit",
+				"icon": "assets/logo.png"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
 					"command": "iruka-flutter-cubit-generator.newCubit",
-					"group": "navigation",
+					"group": "iruka-flutter-cubit-generator",
 					"when": "explorerResourceIsFolder"
 				}
 			]
